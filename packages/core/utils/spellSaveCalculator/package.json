@@ -1,0 +1,8 @@
+{
+    "name": "@app/spellsavecalculator",
+    "main": "./index.ts",
+    "dependencies": {
+        "@app/bonuscalculator": "file:",
+        "@app/spellsavecalculator": "file:"
+    }
+}

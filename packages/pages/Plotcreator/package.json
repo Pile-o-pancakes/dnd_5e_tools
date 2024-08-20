@@ -1,0 +1,7 @@
+{
+    "name": "@app/plotcreator",
+    "main": "./index.ts",
+    "dependencies": {
+        "@app/plotcreator": "file:"
+    }
+}

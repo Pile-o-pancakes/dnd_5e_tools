@@ -1,0 +1,4 @@
+{
+    "name": "@app/modifiercalculator",
+    "main": "./index.ts"
+}

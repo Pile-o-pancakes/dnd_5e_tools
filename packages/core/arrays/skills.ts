@@ -1,0 +1,20 @@
+export const skills = [
+    "Acrobatics",
+    "Animal handling",
+    "Arcana",
+    "Athletics",
+    "Deception",
+    "History",
+    "Insight",
+    "Intimidation",
+    "Investigation",
+    "Medicine",
+    "Nature",
+    "Perception",
+    "Performance",
+    "Persuasion",
+    "Religion",
+    "Sleight of hand",
+    "Stealth",
+    "Survival"
+];

@@ -1,0 +1,7 @@
+{
+    "name": "@app/landing",
+    "main": "./index.ts",
+    "dependencies": {
+        "@app/landing": "file:"
+    }
+}

@@ -1,0 +1,4 @@
+{
+    "name": "@app/randomdie",
+    "main": "./index.ts"
+}

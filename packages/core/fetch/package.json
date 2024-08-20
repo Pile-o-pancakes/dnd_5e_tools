@@ -1,0 +1,4 @@
+{
+    "name": "@app/fetch",
+    "main": "./index.ts"
+}

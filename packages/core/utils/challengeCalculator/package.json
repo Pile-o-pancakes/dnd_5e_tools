@@ -1,0 +1,9 @@
+{
+    "name": "@app/challengecalculator",
+    "main": "./index.ts",
+    "dependencies": {
+        "@app/bonuscalculator": "file:",
+        "@app/challengecalculator": "file:",
+        "@app/spellsavecalculator": "file:"
+    }
+}

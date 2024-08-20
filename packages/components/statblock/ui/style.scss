@@ -1,0 +1,51 @@
+#statblock {
+    display: grid;
+    background-color: khaki;
+    width: 60rem;
+    border-style: solid;
+    border-color: burlywood;
+}
+
+.statSection {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-bottom-style: solid;
+    border-color: brown;
+}
+
+.singleRow {
+    grid-column: span 6;
+}
+
+.header {
+    grid-column: span 6;
+    text-align: center;
+}
+
+@mixin twoColumned() {
+    grid-column: span 3;
+}
+
+#skills > h4, #skills > p {
+    @include twoColumned;
+}
+
+#spellcasting > h4, #spellcasting > p {
+    @include twoColumned;
+}
+
+#actions > h4, #actions > p {
+    @include twoColumned;
+}
+
+#reactions > h4, #reactions > p {
+    @include twoColumned;
+}
+
+#features > h4, #features > p {
+    @include twoColumned;
+}
+
+h4 {
+    text-align: center;
+}

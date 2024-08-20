@@ -1,0 +1,4 @@
+{
+    "name": "@app/rangeinput",
+    "main": "./index.ts"
+}

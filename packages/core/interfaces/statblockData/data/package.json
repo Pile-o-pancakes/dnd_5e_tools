@@ -1,0 +1,7 @@
+{
+    "name": "@app/statblockdata",
+    "main": "./index.ts",
+    "dependencies": {
+        "@app/statblockdata": "file:"
+    }
+}

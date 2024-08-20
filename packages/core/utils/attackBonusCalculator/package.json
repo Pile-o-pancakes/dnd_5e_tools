@@ -1,0 +1,8 @@
+{
+    "name": "@app/attackbonuscalculator",
+    "main": "./index.ts",
+    "dependencies": {
+        "@app/attackbonuscalculator": "file:",
+        "@app/bonuscalculator": "file:"
+    }
+}
