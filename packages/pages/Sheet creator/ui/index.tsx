@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "@app/button";
 import { CheckboxInput } from "@app/checkboxinput";
-import { RadioInput } from "@app/radioinput";
 import { RangeInput } from "@app/rangeinput";
 import { TextInput } from "@app/textinput";
 
@@ -53,7 +52,7 @@ export function Sheetcreator() {
 
     const [ creatureAbilityScores, setCreatureAbilityScores ] = useState<string[]>(["10", "10", "10", "10", "10", "10"]);
     const [ creatureSavingThrows, setCreatureSavingThrows ] = useState<boolean[]>([false, false, false, false, false, false]);
-    const [ creatureSkills, setCreatureSkills ] = useState<boolean[]>([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+    const [ creatureSkills, setCreatureSkills ] = useState<boolean[]>(Array(13).fill([false]));
 
     const [ creatureResistances, setCreatureResistances ] = useState<boolean[]>([false, false, false, false, false, false, false, false, false, false, false, false, false]);
     const [ creatureVulnerabilities, setCreatureVulnerabilities ] = useState<boolean[]>([false, false, false, false, false, false, false, false, false, false, false, false, false]);
@@ -94,8 +93,6 @@ export function Sheetcreator() {
     });
 
     const [ actionList, setactionList ] = useState<boolean>(false);
-
-    // const [monsterData, setMonsterData] = useState();
 
     function handleOnChangeString(event: React.SyntheticEvent<HTMLInputElement> |
         React.ChangeEvent<HTMLSelectElement>,
@@ -253,12 +250,12 @@ export function Sheetcreator() {
 
                     { /*TODO: fetcha alla spells och rendera*/}
 
-                    <select onChange={ (e) => handleOnChangeStringArray(e!, creature)>
+                    {/*<select onChange={ (e) => handleOnChangeStringArray(e!, creature)>
                         { abilities.map((ability, i) => {
 
                             return <option key={ i }></option>
                         })}
-                    </select>
+                    </select>*/}
                 
                 </section>
 
