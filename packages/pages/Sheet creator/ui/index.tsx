@@ -61,11 +61,13 @@ export function Sheetcreator() {
 
     const [ creatureSenses, setCreatureSenses ] = useState<string[]>(["0", "0", "0", "0"]);
     const [ creatureTelepathy, setCreatureTelepathy ] = useState<string>("0");
-    const [ creatureLanguages, setCreatureLanguages ] = useState<string[]>([]);
+    const [ creatureLanguages, setCreatureLanguages ] = useState<boolean[]>([]);
     const [ creatureChallengeRating, setcreatureChallengeRating ] = useState<string>();
 
     const [ isInnateSpellcaster, setIsInnateSpellcaster ] = useState<boolean>(false);
     const [ innateSpells, setInnateSpells ] = useState<object>({
+        spellcastAbility: "",
+        0: [],
         1: [],
         2: [],
         3: [],
@@ -78,6 +80,8 @@ export function Sheetcreator() {
     });
     const [ isSpellcaster, setIsSpellcaster ] = useState<boolean>(false);
     const [ spells, setSpells ] = useState<object>({
+        spellcastAbility: "",
+        0: [],
         1: [],
         2: [],
         3: [],
@@ -112,11 +116,16 @@ export function Sheetcreator() {
             setState([ ...currentState ]);
     }
 
-    function handleOnChecked(currentState: Array<boolean>,
+    function handleOnChecked(currentState: boolean,
+        setState: React.Dispatch<React.SetStateAction<boolean>>) {
+
+            setState(!currentState);
+    }
+
+    function handleOnCheckedArray(currentState: Array<boolean>,
         setState: React.Dispatch<React.SetStateAction<boolean[]>>,
         index: number) {
 
-            // const value = (event.target as HTMLInputElement).value;
             currentState[index] = !currentState[index];
             setState([ ...currentState ]);
     }
@@ -189,31 +198,31 @@ export function Sheetcreator() {
                     <h3>Saving throws</h3>
                     { abilities.map((ability, i) => {
 
-                        return <CheckboxInput id={ ability + "saveText" } text={ ability } key={ i } onChange={ () => handleOnChecked(creatureSavingThrows, setCreatureSavingThrows, i) }/>
+                        return <CheckboxInput id={ ability + "saveText" } text={ ability } key={ i } onChange={ () => handleOnCheckedArray(creatureSavingThrows, setCreatureSavingThrows, i) }/>
                     })}
 
                     <h3>Skills</h3>
                     { skills.map((skill, i) => {
                         
-                        return <CheckboxInput id={ skill + "Text" } text={ skill } key={ i } onChange={ () => handleOnChecked(creatureSkills, setCreatureSkills, i) }/>
+                        return <CheckboxInput id={ skill + "Text" } text={ skill } key={ i } onChange={ () => handleOnCheckedArray(creatureSkills, setCreatureSkills, i) }/>
                     })}
 
                     <h3>Resistances</h3>
                     { damageTypes.map((type, i) => {
 
-                        return <CheckboxInput key={ i } id={ "resistance" + type } text={ type } onChange={ () => handleOnChecked(creatureResistances, setCreatureResistances, i) }/>
+                        return <CheckboxInput key={ i } id={ "resistance" + type } text={ type } onChange={ () => handleOnCheckedArray(creatureResistances, setCreatureResistances, i) }/>
                     })}
 
                     <h3>Vulnerabilities</h3>
                     { damageTypes.map((type, i) => {
 
-                        return <CheckboxInput key={ i } id={ "vulnerability" + type } text={ type } onChange={ () => handleOnChecked(creatureResistances, setCreatureResistances, i) }/>
+                        return <CheckboxInput key={ i } id={ "vulnerability" + type } text={ type } onChange={ () => handleOnCheckedArray(creatureVulnerabilities, setCreatureVulnerabilities, i) }/>
                     })}
 
                     <h3>Immunities</h3>
                     { damageTypes.map((type, i) => {
 
-                        return <CheckboxInput key={ i } id={ "immunities" + type } text={ type } onChange={ () => handleOnChecked(creatureResistances, setCreatureResistances, i) }/>
+                        return <CheckboxInput key={ i } id={ "immunities" + type } text={ type } onChange={ () => handleOnCheckedArray(creatureImmunities, setCreatureImmunities, i) }/>
                     })}
 
                     <h3>Senses</h3>
@@ -229,25 +238,27 @@ export function Sheetcreator() {
                     <RangeInput id="telepathic" text="Telepathic" defaultValue="0" min="0" max="200" step="5" onChange={ (e) => handleOnChangeString(e!, setCreatureTelepathy) }/>
                     <p>{ creatureTelepathy }</p>
                     { languages.map((language, i) => {
-                        return <CheckboxInput id={ language + "Box" } text={ language } key={ i } onChange={ (e) => handleOnChangeLanguage(e!, i) }/>
+                        return <CheckboxInput id={ language + "Box" } text={ language } key={ i } onChange={ () => handleOnCheckedArray(creatureLanguages, setCreatureLanguages, i) }/>
                     })}
                 </section>
 
                 <section className="block_5">
-                    <CheckboxInput id="innateSpellcast" text="Innate spellcasting" onChange={ (e) => handleOnChangeInnateSpellcasting(e!) }/>
+                    <CheckboxInput id="innateSpellcast" text="Innate spellcasting" onChange={ () => handleOnChecked(isInnateSpellcaster, setIsInnateSpellcaster) }/>
 
                     <select>
                         <option></option> { /*TODO: fetcha alla spells och rendera*/}
                     </select>
 
-                    <CheckboxInput id="spellcaster" text="Spellcaster" onChange={ (e) => handleOnChangeSpellcasting(e!) }/>
+                    <CheckboxInput id="spellcaster" text="Spellcaster" onChange={ () => handleOnChecked(isSpellcaster, setIsSpellcaster) }/>
 
                     { /*TODO: fetcha alla spells och rendera*/}
 
-                    { abilities.map((ability, i) => {
+                    <select onChange={ (e) => handleOnChangeStringArray(e!, creature)>
+                        { abilities.map((ability, i) => {
 
-                        return <RadioInput key={ i } id="spellcastAbility" name="spellcastAbility" text={ ability } onInput={ (e) => handleOnChangeSpellcastAbility(e!) }/>
-                    })}
+                            return <option key={ i }></option>
+                        })}
+                    </select>
                 
                 </section>
 
